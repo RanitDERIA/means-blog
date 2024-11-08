@@ -15,9 +15,18 @@ export default function Auth({ type }: { type: "signup" | "signin" }) {
         email: "",
         password: "",
     });
+    const [loading, setLoading] = useState(false);  // To handle loading state
     const navigate = useNavigate();
 
     async function sendRequest() {
+        // Check if all fields are filled (basic validation)
+        if (!postInputs.email || !postInputs.password || (type === "signup" && !postInputs.name)) {
+            toast.warning("All fields are required", { duration: 2000 });
+            return;
+        }
+
+        setLoading(true); // Start loading spinner or disable button
+
         try {
             const res = await axios.post(
                 `${BACKEND_URL}/api/v1/user/${type}`,
@@ -30,16 +39,16 @@ export default function Auth({ type }: { type: "signup" | "signin" }) {
                     type === "signin" ? "Login Successful" : "Signup Successful";
                 toast.success(successMessage);
 
-                setTimeout(() => {
-                    navigate("/dashboard"); // Replace with your desired redirect route
-                }, 1000);
+                // Redirect immediately after success
+                navigate("/dashboard"); // Replace with your desired redirect route
             }
         } catch (error: any) {
             console.warn(error);
-            const errorMessage = error.response?.data?.message || "Invalid Inputs";
-            toast.warning(errorMessage, {
-                duration: 2000,
-            });
+            const errorMessage =
+                error.response?.data?.message || "Invalid Inputs";
+            toast.warning(errorMessage, { duration: 2000 });
+        } finally {
+            setLoading(false); // Stop loading spinner or enable button
         }
     }
 
@@ -77,9 +86,10 @@ export default function Auth({ type }: { type: "signup" | "signin" }) {
                 <button
                     type="button"
                     onClick={sendRequest}
+                    disabled={loading}  // Disable button when loading
                     className="mt-5 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                 >
-                    {type === "signin" ? "Sign In" : "Sign Up"}
+                    {loading ? "Loading..." : type === "signin" ? "Sign In" : "Sign Up"}
                 </button>
             </div>
         </div>
