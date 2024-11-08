@@ -12,7 +12,7 @@
   
   <img src="./Readme-assets/logo.png" />
 
-  <h2 align="center">MEANS - Thoughts Amplified</h2>
+  <h2 align="center">Thoughts Amplified</h2>
 
   MEANS is a modern blogging platform that allows users to create, manage, and share their personal blogs. It features an easy-to-use interface with rich text formatting, media embedding, and customizable themes. Users can publish posts and explore a wide range of blogs based on their interests. With secure user authentication, responsive design, and dynamic content, MEANS offers an engaging and personalized blogging experience.<br />
   
