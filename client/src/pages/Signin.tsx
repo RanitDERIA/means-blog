@@ -1,5 +1,5 @@
 import Auth from "../components/Auth.js";
-import Quote from "../components/Quote.js";
+import { Quote } from "../components/Quote.js";
 
 export default function Signin() {
 	return (
