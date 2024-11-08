@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Gayathri:wght@100;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	@apply font-head;
+  }
+/* Style the scrollbar for Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 10px;  /* Adjust the width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #068932;  /* Set the color of the scrollbar */
+    border-radius: 0;  /* Remove the rounded corners (sharp edges) */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;  /* Set background of the scrollbar track */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #505050;
+}
+
+

@@ -1,0 +1,17 @@
+{
+	"name": "@praneethaylalvl1/medium-common",
+	"version": "4.0.0",
+	"description": "updated post update validation",
+	"main": "dist/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@praneethaylalvl1/medium-common": "file:",
+		"typescript": "^5.4.3",
+		"zod": "^3.22.4"
+	}
+}

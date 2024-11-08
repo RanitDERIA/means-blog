@@ -1,0 +1,25 @@
+{
+  "scripts": {
+    "dev": "wrangler dev src/index.ts",
+    "deploy": "wrangler deploy --minify src/index.ts"
+  },
+  "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@praneethaylalvl1/medium-common": "^3.0.0",
+    "@prisma/client": "^5.11.0",
+    "@prisma/extension-accelerate": "^1.0.0",
+    "@types/moment-timezone": "^0.5.30",
+    "axios": "^1.7.7",
+    "hono": "^4.1.4",
+    "moment-timezone": "^0.5.45",
+    "prisma": "^5.11.0",
+    "react-router-dom": "^6.28.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240208.0",
+    "wrangler": "^3.32.0"
+  }
+}
