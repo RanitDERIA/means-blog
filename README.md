@@ -10,7 +10,7 @@
   <br />
   <br />
   
-  <img src="./Readme-assets/logo.png" />
+  <img src="./Readme-assets/logop.png" />
 
   <h2 align="center">Thoughts Amplified</h2>
 
