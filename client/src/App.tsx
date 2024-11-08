@@ -60,7 +60,6 @@ function App() {
         return (
             <div className="flex items-center justify-center h-screen flex-col">
                 <Loader /> {/* Display the loader during loading */}
-                {/* Add space to push "MEANS" further down */}
                 <div className="mt-24 font-logo font-thik text-2xl text-gray-900">MEANS</div>
             </div>
         );
