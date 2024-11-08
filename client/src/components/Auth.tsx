@@ -5,7 +5,7 @@ import TitleAuth from "./AuthHeader";
 import LabelInput from "./LabelInput";
 import axios from "axios";
 import { BACKEND_URL } from "../../config";
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
 import "react-toastify/dist/ReactToastify.css";
 
 // Define the Auth component
