@@ -19,7 +19,9 @@ export default function Auth({ type }: { type: "signup" | "signin" }) {
     async function sendRequest() {
         try {
             const res = await axios.post(
-                `${BACKEND_URL}/api/v1/user/${type === "signin" ? "signin" : "signup"}`,
+                `${BACKEND_URL}/api/v1/user/${
+                    type === "signin" ? "signin" : "signup"
+                }`,
                 postInputs
             );
 
@@ -27,18 +29,15 @@ export default function Auth({ type }: { type: "signup" | "signin" }) {
             localStorage.setItem("token", jwt);
             if (res.status === 200) {
                 const successMessage =
-                    type === "signin"
-                        ? "Login Successful"
-                        : "Signup Successful";
+                    type === "signin" ? "Login Successful" : "Signup Successful";
                 toast.success(successMessage);
                 setTimeout(() => {
-                    window.location.reload();
+                    window.location.href = "/"; // Redirects to home or a specific page after login
                 }, 1000);
             }
         } catch (error: any) {
             console.warn(error);
-            const errorMessage =
-                error.response?.data?.message ?? "Invalid Inputs";
+            const errorMessage = error.response?.data?.message ?? "Invalid Inputs";
             toast.warning(errorMessage, {
                 duration: 2000,
             });
@@ -46,7 +45,7 @@ export default function Auth({ type }: { type: "signup" | "signin" }) {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen">
+        <div className="flex flex-col items-center justify-center h-screen ">
             <TitleAuth type={type}></TitleAuth>
 
             <div className="grid gap-3 pt-10">
@@ -93,11 +92,6 @@ export default function Auth({ type }: { type: "signup" | "signin" }) {
                     {type === "signin" ? "Sign In" : "Sign Up"}
                 </button>
             </div>
-            <Toaster
-                closeButton
-                position="top-right"
-                duration={1200}
-            ></Toaster>
         </div>
     );
 }
