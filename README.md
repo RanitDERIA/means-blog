@@ -61,7 +61,7 @@ You will also need to set up the required environment variables mentioned in the
 - **Deployment Platform:** <img align="center" alt="Vercel" height="30" width="30" src="https://cdn.sanity.io/images/34ent8ly/production/223a29eb0698fb7fbc6d158a6f7e698d155e025f-824x824.png"> Vercel
 - **Packages:** <img align="center" alt="npm" height="30" width="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg"> npm
 - **Cloud Services:** <img align="center" alt="Aiven" height="30" width="30" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDTCwEXWODkWQsnWvvmrNYeI7y2P-W8XPluA&s"> Aiven
-- **Web Framework:** <img align="center" alt="Hono" height="30" width="30" src="https://hono.dev/images/logo-small.png"> Aiven
+- **Web Framework:** <img align="center" alt="Hono" height="30" width="30" src="https://hono.dev/images/logo-small.png"> Hono
 - **CSS Framework:** <img align="center" alt="Tailwind" height="30" width="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"> Tailwind
 - **Hosting for Static Assets:** <img align="center" alt="cloudflare" height="30" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg">Cloudflare
 
