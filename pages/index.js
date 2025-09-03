@@ -20,7 +20,7 @@ export default function Home({ blogs, topics }) {
   return (
     <>
       <Head>
-        <title>Bits-0f-C0de 🚀</title>
+        <title>Means</title>
         <meta name="title" content="Means" />
         <meta
           name="description"
@@ -50,6 +50,9 @@ export default function Home({ blogs, topics }) {
           property="twitter:image"
           content="https://raw.githubusercontent.com/RanitDERIA/means-blog/main/Extra/sc.png"
         />
+
+      {/* Favicon */}
+      <link rel="icon" href="/Extra/favour.png" type="image/png" />
       </Head>
 
       <div className="min-h-screen relative bg-white dark:bg-gray-900">
