@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 function Navbar({ topics }) {
   const [isMounted, setIsMounted] = useState(false);
   const [isLogin, setLogin] = useState(false);
+  const [isSigningIn, setIsSigningIn] = useState(false);
   const { theme, setTheme } = useTheme();
   const [viewAlert, setViewAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
@@ -29,53 +30,90 @@ function Navbar({ topics }) {
       dispatch({ type: "STORE_USER", payload: user });
       setLogin(true);
     }
-  }, []);
+  }, [dispatch]);
 
   const toggleTheme = () => {
     if (isMounted) {
       setTheme(theme === "light" ? "dark" : "light");
     }
   };
-  const handelSignOut = () => {
-    signOut(auth)
-      .then((res) => {
-        setLogin(false);
-        localStorage.removeItem("user");
-        dispatch({ type: "REMOVE_USER" });
-        setViewAlert(true);
-        setAlertMessage("Hope to see you again !!");
-        setTimeout(() => {
-          setViewAlert(false);
-        }, 2000);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+
+  const handelSignOut = async () => {
+    try {
+      await signOut(auth);
+      setLogin(false);
+      localStorage.removeItem("user");
+      dispatch({ type: "REMOVE_USER" });
+      setViewAlert(true);
+      setAlertMessage("Hope to see you again !!");
+      setTimeout(() => {
+        setViewAlert(false);
+      }, 2000);
+    } catch (error) {
+      console.error("Sign out error:", error);
+    }
   };
 
-  const handelSignIn = () => {
-    signInWithPopup(auth, provider)
-      .then((res) => {
-        const userObj = {
-          name: res.user.displayName,
-          photo: res.user.photoURL,
-          token: res.user.accessToken,
-          uid: res.user.uid,
-        };
+  const handelSignIn = async () => {
+    if (isSigningIn) return; // Prevent multiple clicks
+    
+    try {
+      setIsSigningIn(true);
+      console.log("🔄 Starting Google Sign-In...");
+      console.log("Provider:", provider);
+      console.log("Auth:", auth);
+      
+      const result = await signInWithPopup(auth, provider);
+      console.log("✅ Sign-in successful:", result);
+      
+      const userObj = {
+        name: result.user.displayName,
+        photo: result.user.photoURL,
+        token: result.user.accessToken,
+        uid: result.user.uid,
+        email: result.user.email,
+      };
 
-        localStorage.setItem("user", JSON.stringify(userObj));
-        dispatch({ type: "STORE_USER", payload: userObj });
+      localStorage.setItem("user", JSON.stringify(userObj));
+      dispatch({ type: "STORE_USER", payload: userObj });
 
-        setLogin(true);
-        setViewAlert(true);
-        setAlertMessage(`Hello ${res.user.displayName}`);
-        setTimeout(() => {
-          setViewAlert(false);
-        }, 2000);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      setLogin(true);
+      setViewAlert(true);
+      setAlertMessage(`Hello ${result.user.displayName}`);
+      setTimeout(() => {
+        setViewAlert(false);
+      }, 2000);
+    } catch (error) {
+      console.error("❌ Sign-in error:", error);
+      
+      // Handle specific error cases
+      let errorMessage = "Sign-in failed. Please try again.";
+      
+      switch (error.code) {
+        case 'auth/popup-blocked':
+          errorMessage = "Popup was blocked. Please allow popups for this site.";
+          break;
+        case 'auth/popup-closed-by-user':
+          errorMessage = "Sign-in was cancelled.";
+          break;
+        case 'auth/unauthorized-domain':
+          errorMessage = "This domain is not authorized. Please contact support.";
+          break;
+        case 'auth/network-request-failed':
+          errorMessage = "Network error. Please check your connection.";
+          break;
+        default:
+          errorMessage = error.message || "An unexpected error occurred.";
+      }
+      
+      setViewAlert(true);
+      setAlertMessage(errorMessage);
+      setTimeout(() => {
+        setViewAlert(false);
+      }, 3000);
+    } finally {
+      setIsSigningIn(false);
+    }
   };
 
   return (
@@ -145,7 +183,10 @@ function Navbar({ topics }) {
                 </a>
               </Link>
 
-              <button className="flex items-center mx-2 lg:mx-4 text-base text-gray-800 hover:text-indigo-600 dark:text-gray-50">
+              <button 
+                className="flex items-center mx-2 lg:mx-4 text-base text-gray-800 hover:text-indigo-600 dark:text-gray-50"
+                disabled={isSigningIn}
+              >
                 {isLogin ? (
                   <span
                     className="md:flex items-center"
@@ -155,8 +196,14 @@ function Navbar({ topics }) {
                     <IoLogOutOutline className="text-xl mx-1" />
                   </span>
                 ) : (
-                  <span className="md:flex items-center" onClick={handelSignIn}>
-                    <span className="hidden md:block text-sm font-medium"> Sign In</span>
+                  <span 
+                    className="md:flex items-center" 
+                    onClick={handelSignIn}
+                    style={{ opacity: isSigningIn ? 0.6 : 1 }}
+                  >
+                    <span className="hidden md:block text-sm font-medium">
+                      {isSigningIn ? "Signing In..." : "Sign In"}
+                    </span>
                     <AiOutlineGoogle className="text-xl mx-1" />
                   </span>
                 )}
