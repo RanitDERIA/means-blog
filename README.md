@@ -258,7 +258,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 If you want to get in touch or have any questions regarding this project, feel free to reach out:
 
-📧 **Email:** [Your Email]
 💼 **LinkedIn:** [Ranit Deria](https://www.linkedin.com/in/ranit-deria-916864257/)
 🐦 **Twitter:** [@DeriaRanit](https://twitter.com/DeriaRanit)
 💻 **GitHub:** [@RanitDERIA](https://github.com/RanitDERIA)
