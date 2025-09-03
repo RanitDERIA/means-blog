@@ -1,6 +1,6 @@
 // Firebase/Firebase.js
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -32,6 +32,13 @@ console.log('Firebase Config Status:', {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+
+// Create and export Google provider
+export const provider = new GoogleAuthProvider();
+
+// Optional: Add scopes for additional user information
+provider.addScope('email');
+provider.addScope('profile');
 
 // Enhanced auth state debugging
 auth.onAuthStateChanged((user) => {
