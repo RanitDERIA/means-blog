@@ -10,10 +10,7 @@
   <br />
   <br />
   
-  <p align="center">
-  <img src="./Readme-assets/favour.png" alt="Means Logo" width="25" height="25" style="vertical-align: middle;" />
-  <strong><code style="vertical-align: middle; font-size: 5em;">&nbsp;MEANS&nbsp;</code></strong>
-</p>
+  <img src="./Readme-assets/blog.png" />
 
 
 
