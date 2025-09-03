@@ -21,7 +21,7 @@ export default function Home({ blogs, topics }) {
     <>
       <Head>
         <title>Bits-0f-C0de 🚀</title>
-        <meta name="title" content="Bits-0f-C0de 🚀" />
+        <meta name="title" content="Means" />
         <meta
           name="description"
           content="Tech blogs and articles on various topics related to Software Development"
