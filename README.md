@@ -15,7 +15,7 @@
 
 
 
-  <h2 align="center">MEANS - Modern Tech Blog Platform</h2>
+  <h2 align="center">Modern Tech Blog Platform</h2>
 
 MEANS is a cutting-edge tech blogging platform built with Next.js and Firebase that enables developers and tech enthusiasts to share their knowledge and insights. The platform features a sleek modern design with dark/light theme support, Google authentication, real-time data synchronization, and an intuitive content management system for creating and publishing technical articles across various programming topics.<br />
 
