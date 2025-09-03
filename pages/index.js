@@ -52,7 +52,7 @@ export default function Home({ blogs, topics }) {
         />
 
       {/* Favicon */}
-      <link rel="icon" href="/Extra/favour.png" type="image/png" />
+      <link rel="icon" href="Extra/favour.png" type="image/png" />
       </Head>
 
       <div className="min-h-screen relative bg-white dark:bg-gray-900">
