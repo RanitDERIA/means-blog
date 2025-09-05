@@ -37,7 +37,7 @@ function about({ topics }) {
             <a
               rel="noopener noreferrer"
               target="_blank"
-              href="#"
+              href="https://profession-folio.vercel.app/"
             >
               See My Works
             </a>
