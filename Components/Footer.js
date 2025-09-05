@@ -11,7 +11,7 @@ function Footer() {
           <p className="text-gray-50 text-sm text-center sm:text-left">
             © {year} Means —
             <a
-              href="#"
+              href="https://profession-folio.vercel.app/"
               rel="noopener noreferrer"
               className="text-gray-50 ml-1"
               target="_blank"
